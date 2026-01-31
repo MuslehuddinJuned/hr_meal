@@ -1,0 +1,125 @@
+<odoo>
+    <!-- Module Category for Dashboard -->
+    <record id="category_hr_meal" model="ir.module.category">
+        <field name="name">HR Meal</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_meal_type" model="ir.actions.act_window">
+        <field name="name">Meal Types</field>
+        <field name="res_model">meal.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_meal_package" model="ir.actions.act_window">
+        <field name="name">Meal Packages</field>
+        <field name="res_model">meal.package</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_meal_group" model="ir.actions.act_window">
+        <field name="name">Meal Groups</field>
+        <field name="res_model">meal.group</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_meal_assign" model="ir.actions.act_window">
+        <field name="name">Meal Assignments</field>
+        <field name="res_model">meal.assign</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_meal_daily" model="ir.actions.act_window">
+        <field name="name">Daily Meals</field>
+        <field name="res_model">meal.daily</field>
+        <field name="view_mode">list,form,pivot</field>
+        <!-- <field name="context">{'search_default_today':1, 'search_default_group_meal_type_id':1}</field> -->
+    </record>
+
+    <record id="action_meal_expanse" model="ir.actions.act_window">
+        <field name="name">Meal Expenses</field>
+        <field name="res_model">meal.expanse</field>
+        <field name="view_mode">list,form</field>
+        <!-- <field name="context">{'search_default_group_meal_package_id':1}</field> -->
+    </record>
+
+    <record id="action_meal_daily_wizard" model="ir.actions.act_window">
+        <field name="name">Calculate Meal</field>
+        <field name="res_model">meal.daily.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Top-level Menu: Meal Management -->
+    <menuitem id="meal_management_menu"
+                name="Meal Management"
+                sequence="10"
+                web_icon="hr_meal,static/description/icon.png"/>
+
+    <!-- Submenus -->
+    <menuitem id="meal_operation_menu"
+                name="Operation"
+                parent="meal_management_menu"
+                sequence="1"/>
+
+    <menuitem id="meal_daily_menu"
+                name="Daily Meals"
+                parent="meal_operation_menu"
+                action="action_meal_daily"
+                sequence="1"/>
+
+    <menuitem id="meal_expanse_menu"
+                name="Meal Expenses"
+                parent="meal_operation_menu"
+                action="action_meal_expanse"
+                sequence="3"/>
+
+    <menuitem id="menu_meal_daily_calculate"
+                name="Calculate Meal"
+                parent="meal_operation_menu"
+                action="action_meal_daily_wizard"
+                sequence="2"/>
+
+    <menuitem id="meal_report_menu"
+                name="Report"
+                parent="meal_management_menu"
+                sequence="2"/>
+
+    <menuitem id="menu_meal_employee_report"
+              name="Employee Meal Cost"
+              parent="meal_report_menu"
+              action="action_meal_employee_report_wizard"
+              sequence="1"/>
+
+    <menuitem id="meal_configuration_menu"
+                name="Configuration"
+                parent="meal_management_menu"
+                sequence="3"/>
+
+    <menuitem id="meal_package_menu"
+                name="Meal Packages"
+                parent="meal_configuration_menu"
+                action="action_meal_package"
+                sequence="4"/>
+    
+    <menuitem id="meal_type_menu"
+                name="Meal Types"
+                parent="meal_configuration_menu"
+                action="action_meal_type"
+                sequence="3"/>
+
+    <menuitem id="meal_group_menu"
+                name="Meal Groups"
+                parent="meal_configuration_menu"
+                action="action_meal_group"
+                sequence="2"/>
+                
+    <menuitem id="meal_assign_menu"
+                name="Meal Assignments"
+                parent="meal_configuration_menu"
+                action="action_meal_assign"
+                sequence="1"/>
+
+    
+</odoo>
