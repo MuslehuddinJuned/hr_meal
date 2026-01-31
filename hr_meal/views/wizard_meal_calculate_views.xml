@@ -1,0 +1,21 @@
+
+<odoo>
+    <record id="view_meal_daily_wizard" model="ir.ui.view">
+        <field name="name">meal.daily.wizard.form</field>
+        <field name="model">meal.daily.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="meal_group_id" options="{'no_create': True, 'no_create_edit': True}"/>
+                    <field name="employee_ids" widget="many2many_avatar_employee" options="{'no_create': True, 'no_create_edit': True}"/>
+                </group>
+                <footer>
+                    <button name="action_calculate" type="object" class="btn-primary" string="Calculate"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
