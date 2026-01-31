@@ -1,6 +1,0 @@
-<odoo>
-    <record id="group_meal_manager" model="res.groups">
-        <field name="name">Meal Manager</field>
-    </record>
-
-</odoo>
