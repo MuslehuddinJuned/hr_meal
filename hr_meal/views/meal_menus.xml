@@ -121,5 +121,9 @@
                 action="action_meal_assign"
                 sequence="1"/>
 
-    
+    <menuitem id="menu_unassigned_meal_employees"
+                name="Unassigned Employees"
+                parent="meal_configuration_menu"
+                action="hr_meal.action_unassigned_meal_employees"
+                sequence="5"/>
 </odoo>

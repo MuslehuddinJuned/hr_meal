@@ -23,7 +23,13 @@ class MealDaily(models.Model):
             rec.department_id = rec.employee_id.department_id
 
 
-    @api.depends('meal_type_id', 'number_of_meal')
+    @api.depends(
+        'number_of_meal',
+        'meal_type_id',
+        'meal_type_id.weightage',
+        'meal_type_id.subsidy',
+        'meal_type_id.subsidy_type',
+    )
     def _compute_weighted_meals(self):
         for record in self:
             if record.meal_type_id and record.number_of_meal:

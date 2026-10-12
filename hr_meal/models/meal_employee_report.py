@@ -15,6 +15,8 @@ class MealEmployeeReport(models.Model):
     total_meal = fields.Float(string='Total Meal')
     meal_rate = fields.Float(string='Meal Rate')
     total_bill = fields.Float(string='Total Bill')
+    subsidy = fields.Float(string='Subsidy')
+    bill_after_subsidy = fields.Float(string='After Subsidy')
 
 
     def _compute_department(self):
@@ -30,7 +32,9 @@ class MealEmployeeReport(models.Model):
                     e.id AS employee_id,
                     0::float AS total_meal,
                     0::float AS meal_rate,
-                    0::float AS total_bill
+                    0::float AS total_bill,
+                    0::float AS subsidy,
+                    0::float AS bill_after_subsidy
                 FROM hr_employee e
                 WHERE FALSE
             )
