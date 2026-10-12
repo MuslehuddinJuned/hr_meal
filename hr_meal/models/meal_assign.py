@@ -34,9 +34,9 @@ class HrEmployee(models.Model):
         }
 
     @api.model
-    def name_search(self, name='', domain=None, operator='ilike', limit=100):
-        if domain is None:
-            domain = []
+    def name_search(self, name='', args=None, operator='ilike', limit=100):
+        if args is None:
+            args = []
 
         # Check if the context flag is set (passed from the view)
         if self.env.context.get('exclude_assigned_for_meal'):
@@ -45,12 +45,12 @@ class HrEmployee(models.Model):
 
             if assigned_employee_ids:
                 # Add the exclusion domain
-                domain.append(('id', 'not in', assigned_employee_ids))
+                args.append(('id', 'not in', assigned_employee_ids))
 
         # Call the super method with the new API
         return super().name_search(
             name=name,
-            domain=domain,
+            args=args,
             operator=operator,
             limit=limit
         )
@@ -75,10 +75,9 @@ class MealAssign(models.Model):
         for rec in self:
             rec.department_id = rec.employee_id.department_id
 
-    _name_unique = models.Constraint(
-        'unique(employee_id)',
-        "One employee can be assigned once!",
-    )
+    _sql_constraints = [
+        ('name_unique', 'unique(employee_id)', 'One employee can be assigned once!')
+    ]
 
 
 class MealGroup(models.Model):
@@ -89,7 +88,6 @@ class MealGroup(models.Model):
     name = fields.Char(string='Meal Group', required=True)
     description = fields.Text(string='Description')
 
-    _name_unique = models.Constraint(
-        'unique(name)',
-        "Meal Group must be unique!",
-    )
+    _sql_constraints = [
+        ('name_unique', 'unique(name)', 'Meal Group must be unique!')
+    ]

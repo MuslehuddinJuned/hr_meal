@@ -1,7 +1,7 @@
 
 {
     'name': 'Meal Management',
-    'version': '19.0.1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Human Resources',
     'summary': """
             Enables meal structure management, employee meal assignment, daily meal calculation, expense tracking, and employee-wise cost reporting by date range.

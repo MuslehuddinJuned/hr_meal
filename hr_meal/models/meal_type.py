@@ -13,10 +13,9 @@ class MealType(models.Model):
     subsidy = fields.Float(string='Subsidy', help='Subsidy amount for this meal type')
     meal_package_id = fields.Many2one('meal.package', string='Meal Package')
     
-    _name_unique = models.Constraint(
-        'unique(name)',
-        "Meal Type must be unique!",
-    )
+    _sql_constraints = [
+        ('name_unique', 'unique(name)', 'Meal Type must be unique!')
+    ]
 
 
 class MealPackage(models.Model):
@@ -29,7 +28,6 @@ class MealPackage(models.Model):
     meal_type_ids = fields.Many2many('meal.type', string='Meal Types')
     is_active = fields.Boolean(string='Is Active', default=True)
 
-    _name_unique = models.Constraint(
-        'unique(name)',
-        "Meal Package must be unique!",
-    )
+    _sql_constraints = [
+        ('name_unique', 'unique(name)', 'Meal Package must be unique!')
+    ]

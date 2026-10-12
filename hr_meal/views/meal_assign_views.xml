@@ -41,16 +41,16 @@
                 <field name="employee_id"/>
                 <field name="meal_type_ids"/>
                 <field name="meal_group_id"/>
-                <separator string="Group By"/>
-                <filter
-                    string="Meal Group"
-                    name="group_meal_group_id"
-                    context="{'group_by': 'meal_group_id'}"/>
-                <!-- <filter
-                    string="Department"
-                    name="group_department_id"
-                    context="{'group_by': 'department_id'}"/> -->
-
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Meal Group"
+                        name="group_meal_group_id"
+                        context="{'group_by': 'meal_group_id'}"/>
+                    <!-- <filter
+                        string="Department"
+                        name="group_department_id"
+                        context="{'group_by': 'department_id'}"/> -->
+                </group>
             </search>
         </field>
     </record>

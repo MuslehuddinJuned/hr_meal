@@ -98,7 +98,7 @@ Technical Information
 
 * Model-driven architecture
 * SQL-based reporting views for performance
-* Compatible with Odoo 19
+* Compatible with Odoo 18
 * No external Python dependencies
 
 Known Limitations

@@ -90,15 +90,16 @@
                 <search string="Expanse Meals Search">                    
                     <!-- Filters -->
                     <filter name="today" string="Today"
-                            domain="[('date', '=', 'today')]" />
+                            domain="[('date', '=', context_today().strftime('%Y-%m-%d'))]" />
                     <filter name="yesterday" string="Yesterday"
-                            domain="[('date', '=', 'today -1d')]" />
+                            domain="[('date', '=', (context_today() - relativedelta(days=1)).strftime('%Y-%m-%d'))]" />
                     <!-- <filter name="this_week" string="This Week" domain="['|', ('date','&gt;=', (context_today() - 7)),('date','&lt;=',context_today())]"/> -->
                     <filter name="filter_expected_date" string="Date Range" date="date"/>
                     
                     <!-- Group By -->
-                    <separator string="Group By"/>
-                    <filter string="Package" name="group_meal_package_id" context="{'group_by':'meal_package_id'}"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Package" name="group_meal_package_id" context="{'group_by':'meal_package_id'}"/>
+                    </group>
                 </search>
             </field>
         </record>
