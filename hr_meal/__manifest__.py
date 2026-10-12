@@ -1,7 +1,7 @@
 
 {
     'name': 'Meal Management',
-    'version': '19.0.1.0.0',
+    'version': '20.0.1.0.0',
     'category': 'Human Resources',
     'summary': """
             Enables meal structure management, employee meal assignment, daily meal calculation, expense tracking, and employee-wise cost reporting by date range.
@@ -12,7 +12,7 @@
     'depends': ['base', 'hr', 'mail', 'product', 'uom'],
     'data': [
         # 'security/meal_security.xml',
-        'security/ir.model.access.csv',
+        'security/ir.access.csv',
         'views/meal_type_views.xml',
         'views/meal_assign_views.xml',
         'views/meal_daily_views.xml',

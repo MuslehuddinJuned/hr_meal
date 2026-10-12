@@ -1,0 +1,11 @@
+id,name,model_id,group_id/id,operation,domain
+access_meal_type,access_meal_type,meal.type,base.group_user,cru,
+access_meal_package,access_meal_package,meal.package,base.group_user,cru,
+access_meal_assign,access_meal_assign,meal.assign,base.group_user,crud,
+access_meal_daily,access_meal_daily,meal.daily,base.group_user,crud,
+access_meal_expanse,access_meal_expanse,meal.expanse,base.group_user,cru,
+access_meal_expanse_line,access_meal_expanse_line,meal.expanse.line,base.group_user,crud,
+access_meal_daily_wizard,access_meal_daily_wizard,meal.daily.wizard,base.group_user,crud,
+access_meal_employee_report_wizard,access_meal_employee_report_wizard,meal.employee.report.wizard,base.group_user,crud,
+access_meal_employee_report,access_meal_employee_report,meal.employee.report,base.group_user,crud,
+access_meal_group,access_meal_group,meal.group,base.group_user,cru,
