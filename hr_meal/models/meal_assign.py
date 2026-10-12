@@ -3,6 +3,36 @@ from odoo import api, models, fields
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
+    is_meal_assigned = fields.Boolean(
+        string='Meal Assigned',
+        compute='_compute_is_meal_assigned',
+        search='_search_is_meal_assigned',
+    )
+
+    def _compute_is_meal_assigned(self):
+        assigned_ids = set(self.env['meal.assign'].sudo().search([]).employee_id.ids)
+        for emp in self:
+            emp.is_meal_assigned = emp.id in assigned_ids
+
+    def _search_is_meal_assigned(self, operator, value):
+        assigned_ids = self.env['meal.assign'].sudo().search([]).employee_id.ids
+        if (operator == '=' and value) or (operator == '!=' and not value):
+            return [('id', 'in', assigned_ids)]
+        return [('id', 'not in', assigned_ids)]
+
+    def action_assign_meal(self):
+        """Open a meal.assign form in a dialog, pre-filled with this employee."""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Assign Meal',
+            'res_model': 'meal.assign',
+            'view_mode': 'form',
+            'view_id': self.env.ref('hr_meal.view_meal_assign_form').id,
+            'target': 'new',
+            'context': {'default_employee_id': self.id},
+        }
+
     @api.model
     def name_search(self, name='', domain=None, operator='ilike', limit=100):
         if domain is None:

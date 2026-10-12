@@ -8,7 +8,9 @@
                 <field name="department_id"/>
                 <field name="total_meal"/>
                 <field name="meal_rate"/>
-                <field name="total_bill"/>
+                <field name="total_bill" sum="Total"/>
+                <field name="subsidy" sum="Total"/>
+                <field name="bill_after_subsidy" sum="Total"/>
             </list>
         </field>
     </record>
